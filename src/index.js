@@ -22,19 +22,19 @@ function createLimiter(limit) {
       console.log("Невірне число");
     } else {
       if (i < lim) {
-        console.log("OK");
         i++;
+        return "OK";
       } else {
-        console.log("Error");
+        return "Error";
       }
     }
   };
 }
 
-const limited = createLimiter(-1);
+const limited = createLimiter(2);
 
-limited();
+console.log(limited());
 
-limited();
+console.log(limited());
 
-limited();
+console.log(limited());
