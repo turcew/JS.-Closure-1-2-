@@ -1,7 +1,6 @@
 function createLogger(prefix) {
-  const pref = prefix;
   return function (message) {
-    console.log(`${pref}: ${message}`);
+    console.log(`${prefix}: ${message}`);
   };
 }
 
@@ -14,19 +13,17 @@ authLogger("User logged in");
 apiLogger("Request failed");
 
 function createLimiter(limit) {
-  let lim = limit;
   let i = 0;
 
   return function () {
     if (limit < 1 || !Number.isInteger(limit) || limit === NaN) {
       console.log("Невірне число");
     } else {
-      if (i < lim) {
+      if (i < limit) {
         i++;
         return "OK";
-      } else {
-        return "Error";
       }
+      return "Error";
     }
   };
 }
